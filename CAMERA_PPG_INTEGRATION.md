@@ -163,7 +163,7 @@ class CameraHeartRateModule(reactContext: ReactApplicationContext) :
         cameraSelector,
         imageAnalysis
       )
-  
+    
       // Enable flash/torch
       val camera = cameraProvider.bindToLifecycle(
         currentActivity as androidx.lifecycle.LifecycleOwner,
@@ -214,7 +214,7 @@ class CameraHeartRateModule(reactContext: ReactApplicationContext) :
         if (i + 1 < data.size) {
           val v = (data[i].toInt() and 0xFF).toFloat()
           val u = (data[i + 1].toInt() and 0xFF).toFloat()
-      
+        
           // Simplified YUV to RGB (red channel)
           val r = (v - 128) * 1.77f
           redSum += r.toInt().toLong()
@@ -325,6 +325,29 @@ class FitnessPackage : ReactPackage {
   }
 }
 ```
+
+### fitness-fatigue-system HeartRateMonitorServerProxy
+
+For simplicity, use the built-in proxy:
+
+```typescript
+import { HeartRateMonitorServerProxy } from 'fitness-fatigue-system/heart-rate';
+
+// Server-side (Node.js):
+const hrProxy = new HeartRateMonitorServerProxy();
+const aggregator = new DataAggregator({ hrMax: 185 });
+
+hrProxy.on('reading', (hr) => aggregator.ingestHeartRate(hr));
+
+// Client-side (React Native):
+// Any component can push HR readings:
+await fetch('http://localhost:3001/ingest/hr', {
+  method: 'POST',
+  body: JSON.stringify({ bpm: 72, confidence: 0.9 }),
+});
+```
+
+---
 
 ## React Native Component
 

@@ -53,5 +53,5 @@ export function createCameraHeartRateEmitter(): NativeEventEmitter | null {
 }
 
 export function isCameraHeartRateNativeBridgeAvailable(): boolean {
-  return Platform.OS === 'ios' || Platform.OS === 'android';
+  return Platform.OS === 'android';
 }
