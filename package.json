@@ -1,7 +1,7 @@
 {
   "name": "fitness-fatigue-system",
   "version": "1.0.0",
-  "description": "Hybrid AI + IoT fatigue assessment and rest optimization system using PPG, EMG, and barbell velocity",
+  "description": "fatigue assessment and rest optimization using PPG, EMG, and barbell velocity",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": ["dist/", "src/"],
