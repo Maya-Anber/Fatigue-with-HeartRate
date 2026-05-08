@@ -1,4 +1,4 @@
-# Fitness Fatigue System
+#  Fatigue System
 
 Real-time fatigue assessment from heart rate, EMG, and barbell velocity.
 
